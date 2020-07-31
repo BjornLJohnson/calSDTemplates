@@ -33,13 +33,18 @@ if ( has_post_thumbnail() ) : ?>
 			while ( $loop->have_posts() ) : $loop->the_post();
 
 			//the_title( '<h2 class="entry-title"><a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">', '</a></h2>' ); 
-?>
 
-			$id = get_the_ID();
+			$address = get_post_meta(get_the_ID(), 'address', true);
+
+			?>
+
 			<h2><?php the_title(); ?></h2>
 			<div class="entry-content">
 				<?php the_content(); ?>
 			</div>
+				
+
+			<div class="entry-metadata">Address: <?php echo $address ?></div>
 
 			<?php endwhile; // End of the loop.?>
 
