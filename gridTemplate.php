@@ -1,5 +1,5 @@
 <?php
-/* Template Name: ListingsTemplate */
+/* Template Name: GridTemplate */
 
 get_header();
 
@@ -26,6 +26,7 @@ if ( has_post_thumbnail() ) : ?>
 			<h2>Listings Page</h2>
 			<?php
 			$args = array(
+				'posts_per_page' => 100,
 				'post_type' => 'listing',
 				'post_status' => 'publish'
 			);
@@ -35,16 +36,32 @@ if ( has_post_thumbnail() ) : ?>
 			//the_title( '<h2 class="entry-title"><a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">', '</a></h2>' ); 
 
 			$address = get_post_meta(get_the_ID(), 'address', true);
+			$price = get_post_meta(get_the_ID(), 'price', true);
+			$quantity = get_post_meta(get_the_ID(), 'quantity', true);
+			$modulus = $count % 5;
+			if ( $modulus == 1 ) {
+				$class = 'first';
+			} elseif ( $modulus == 0 ) {
+				$class = 'last';
+			}
 
 			?>
 
-			<h2><?php the_title(); ?></h2>
-			<div class="entry-content">
-				<?php the_content(); ?>
-			</div>
-				
 
-			<div class="entry-metadata">Address: <?php echo $address ?></div>
+			<div class="jmogrid-item <?php echo $class; ?>">
+	    			<?php if ( has_post_thumbnail() ) : ?>
+	      				<a href="<?php the_permalink(); ?>">
+						<?php the_post_thumbnail('jmogrid'); ?>
+					</a>
+				<?php endif; ?>
+	    <h4>
+	      <a href="<?php the_permalink(); ?>"><?php echo wp_trim_words(get_the_title(), 6); ?></a>
+	    </h4>
+	      <div class="jmogrid-meta">Address: <?php echo $address ?></div>
+	      <div class="jmogrid-meta">Price Per Unit: <?php echo $price ?></div>
+	      <div class="jmogrid-meta">Quantity: <?php echo $quantity ?></div>
+	  </div>
+
 
 			<?php endwhile; // End of the loop.?>
 
