@@ -1,0 +1,47 @@
+/* John Morris Grid CSS */
+
+#jmogrid {
+  overflow: hidden;
+  clear: both;
+}
+
+.jmogrid-item {
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 18%;
+  float: right;
+  margin: 20px 1%;
+  border: 1px solid #e4e4e4;
+  border-radius: 3px;
+}
+
+.jmogrid-item.first {
+  width: 19%;
+  margin-left: 0;
+}
+
+.jmogrid-item.last {
+  width: 19%;
+  margin-right: 0;
+}
+
+.jmogrid-item h4 {
+  margin: 0;
+  padding: 20px;
+  padding-bottom: 0;
+}
+
+
+.jmogrid-item p {
+  font-size: 1.5rem;
+}
+
+.jmogrid-item .jmogrid-meta {
+  font-size: 1.0rem;
+  color: #777;
+  padding: 20px;
+  padding-bottom:0;
+  padding-top: 5px;
+}
+
+

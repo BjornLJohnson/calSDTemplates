@@ -1,6 +1,8 @@
 <?php
 /* Template Name: GridTemplate */
 
+wp_enqueue_style('grid', get_stylesheet_directory_uri().'/calsdtemplates/css/grid.css');
+
 get_header();
 
 if ( mik_theme_option( 'header_alignment', 'left-align' ) == 'left-absolute' ) :
@@ -23,7 +25,7 @@ if ( has_post_thumbnail() ) : ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
-			<h2>Listings Page</h2>
+		<h2>Listings Page</h2>
 			<?php
 			$args = array(
 				'posts_per_page' => 100,
