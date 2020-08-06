@@ -9,7 +9,7 @@
   overflow: hidden;
   box-sizing: border-box;
   width: 18%;
-  float: right;
+  float: left;
   margin: 20px 1%;
   border: 1px solid #e4e4e4;
   border-radius: 3px;
@@ -43,5 +43,3 @@
   padding-bottom:0;
   padding-top: 5px;
 }
-
-

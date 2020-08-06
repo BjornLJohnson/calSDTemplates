@@ -1,5 +1,7 @@
 <?php
-/* Template Name: ListingsTemplate */
+/* Template Name: Add Listing Page */
+
+wp_enqueue_style('grid', get_stylesheet_directory_uri() . '/calsdtemplates/css/grid.css');
 
 get_header();
 
@@ -23,31 +25,17 @@ if (has_post_thumbnail()) : ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
-			<h2>Listings Page</h2>
-			<?php
-			$args = array(
-				'post_type' => 'listing',
-				'post_status' => 'publish'
-			);
-			$loop = new WP_Query($args);
-			while ($loop->have_posts()) : $loop->the_post();
+			<h2>Add Listing</h2>
 
-				//the_title( '<h2 class="entry-title"><a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">', '</a></h2>' ); 
-
-				$address = get_post_meta(get_the_ID(), 'address', true);
-
-			?>
-
-				<h2><?php the_title(); ?></h2>
-				<div class="entry-content">
-					<?php the_content(); ?>
-				</div>
-
-
-				<div class="entry-metadata">Address: <?php echo $address ?></div>
-
-			<?php endwhile; // End of the loop.
-			?>
+			<form action=<?php echo get_theme_file_uri( $file = 'calSDTemplates/createListing.php' )?> method="post" enctype="multipart/form-data">
+				Organization Name: <input type="text" name="name"><br>
+				Address: <input type="text" name="address"><br>
+				Product: <input type="text" name="product"><br>
+				Quantity: <input type="text" name="quantity"><br>
+				Price Per Unit: <input type="text" name="price"><br>
+				Choose a Thumbnail Image: <input type="file" name="fileToUpload" id="fileToUpload">
+				<input type="submit">
+			</form>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
