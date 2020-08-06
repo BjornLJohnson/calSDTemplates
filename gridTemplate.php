@@ -32,6 +32,8 @@ if ( has_post_thumbnail() ) : ?>
 				'post_type' => 'listing',
 				'post_status' => 'publish'
 			);
+
+
 			$loop = new WP_Query($args);
 			while ( $loop->have_posts() ) : $loop->the_post();
 
@@ -51,8 +53,8 @@ if ( has_post_thumbnail() ) : ?>
 
 
 			<div class="jmogrid-item <?php echo $class; ?>">
-	    			<?php if ( has_post_thumbnail() ) : ?>
-	      				<a href="<?php the_permalink(); ?>">
+				<?php if ( has_post_thumbnail() ) : ?>
+					<a href="<?php the_permalink(); ?>">
 						<?php the_post_thumbnail('jmogrid'); ?>
 					</a>
 				<?php endif; ?>
