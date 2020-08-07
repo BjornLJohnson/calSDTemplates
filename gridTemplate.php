@@ -33,7 +33,7 @@ if (has_post_thumbnail()) : ?>
 				'post_status' => 'publish'
 			);
 
-
+			$count = 1;
 			$loop = new WP_Query($args);
 			while ($loop->have_posts()) : $loop->the_post();
 
@@ -48,7 +48,7 @@ if (has_post_thumbnail()) : ?>
 				} elseif ($modulus == 0) {
 					$class = 'last';
 				}
-
+				$count = $count + 1;
 			?>
 			
 				<div class="jmogrid-item <?php echo $class; ?>">
