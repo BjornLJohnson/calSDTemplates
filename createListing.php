@@ -1,23 +1,22 @@
 <?php require_once '../../../../wp-load.php'; ?>
 
 <html>
-
 <body>
 
-  Welcome <?php echo $_POST["name"]; ?><br>
+  <h2 class="thanks">Thank you for your post!</h2>
 
+  <div class="thankMSG"> Your listing should now be visible on the listings page</div>
 
-  This is a test
+  <a href="<?php echo get_page_link( get_page_by_title("Listings")->ID ); ?>">Listings Page</a>
 
+  
   <?php
-
   $newListing = array(
     'post_name'  => $_POST["name"],
     'post_title' => $_POST["name"],
     'post_type' => 'listing',
     'post_status' => 'publish'
   );
-
 
   $newListingID = wp_insert_post($newListing);
 
@@ -26,9 +25,25 @@
   add_post_meta($newListingID, 'quantity', $_POST["quantity"], true);
   add_post_meta($newListingID, 'price', $_POST["price"], true);
 
-  ?>
+  $uploaddir = wp_upload_dir();
+  $file = $_FILES['thumbnail'];
+  $uploadfile = $uploaddir['path'] . '/' . basename( $file['name'] );
 
-  Testing
+  move_uploaded_file( $file['tmp_name'] , $uploadfile );
+  $filename = basename( $uploadfile );
+
+  $wp_filetype = wp_check_filetype(basename($filename), null );
+
+  $attachment = array(
+      'post_mime_type' => $wp_filetype['type'],
+      'post_title' => preg_replace('/\.[^.]+$/', '', $filename),
+      'post_content' => '',
+      'post_status' => 'inherit'
+  );
+  $attach_id = wp_insert_attachment( $attachment, $uploadfile );
+
+  set_post_thumbnail( $newListingID, $attach_id );
+  ?>
 
 </body>
 

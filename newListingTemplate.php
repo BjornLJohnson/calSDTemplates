@@ -47,7 +47,7 @@ if (has_post_thumbnail()) : ?>
 				<textarea class="FormElement input-field" name="description" id="term"></textarea><br>
 
 				<div class="input-title">Display Image:</div>
-				<input class="input-field" type="file" name="fileToUpload" id="fileToUpload"><br>
+				<input class="input-field" type="file" name="thumbnail" id="fileToUpload"><br>
 
 				<input id="submit" type="submit">
 			</form>
