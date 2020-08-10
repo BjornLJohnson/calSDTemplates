@@ -1,4 +1,7 @@
-/* John Morris Grid CSS */
+.page-title,
+.main-navigation a{
+	color: white;
+}
 
 #jmogrid {
   overflow: hidden;
