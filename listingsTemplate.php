@@ -23,7 +23,7 @@ if (has_post_thumbnail()) : ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
-			<h2>Listings Page</h2>
+			<h2 class="page-title">Listings Page</h2>
 			<?php
 			$args = array(
 				'post_type' => 'listing',

@@ -25,7 +25,7 @@ if (has_post_thumbnail()) : ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
-			<h2>Add Listing</h2>
+			<h2 class="page-title">Add Listing</h2>
 
 			<form action=<?php echo get_theme_file_uri( $file = 'calSDTemplates/createListing.php' )?> method="post" enctype="multipart/form-data">
 				Organization Name: <input type="text" name="name"><br>
