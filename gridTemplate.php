@@ -50,7 +50,7 @@ if (has_post_thumbnail()) : ?>
 				}
 				$count = $count + 1;
 			?>
-			
+
 				<div class="jmogrid-item <?php echo $class; ?>">
 					<?php if (has_post_thumbnail()) : ?>
 						<a href="<?php the_permalink(); ?>">

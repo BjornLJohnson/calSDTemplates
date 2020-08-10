@@ -1,0 +1,15 @@
+.input-field,
+input[type=submit] {
+    width: 400px;
+    margin-top: 3px;
+}
+
+#submit {
+    height: 45px;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+textarea.input-field {
+    height: 60px;
+}
