@@ -26,19 +26,52 @@ if (has_post_thumbnail()) : ?>
 		<main id="main" class="site-main">
 
 			<h2 class="page-title">Listings Page</h2>
+
+			<form action="" method="get">
+				Search:
+				<input class="input-field" type="text" name="search">
+
+				Location: 
+				<input class="input-field" type="text" name="location">
+
+				<input id="submit" name="submit" type="submit" value="Search">
+			</form>
+
 			<?php
-			$args = array(
-				'posts_per_page' => 100,
-				'post_type' => 'listing',
-				'post_status' => 'publish'
-			);
+
+			if(isset($_GET['submit'])) :
+				$args = array(
+					'posts_per_page' => 100,
+					'post_type' => 'listing',
+					'post_status' => 'publish',
+					's' => $_GET['search']
+				);
+			else :
+				$args = array(
+					'posts_per_page' => 100,
+					'post_type' => 'listing',
+					'post_status' => 'publish'
+				);	
+			endif;
 
 			$count = 1;
 			$loop = new WP_Query($args);
-			while ($loop->have_posts()) : $loop->the_post();
 
-				//the_title( '<h2 class="entry-title"><a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">', '</a></h2>' ); 
+			if(!($loop->have_posts())) :
+				echo "<h2>No results, displaying all listings</h2>";
 
+				$args = array(
+					'posts_per_page' => 100,
+					'post_type' => 'listing',
+					'post_status' => 'publish'
+				);	
+				$loop = new WP_Query($args);	
+			endif;
+			
+			while ($loop->have_posts()) :
+				
+				$loop->the_post();
+				
 				$address = get_post_meta(get_the_ID(), 'address', true);
 				$price = get_post_meta(get_the_ID(), 'price', true);
 				$quantity = get_post_meta(get_the_ID(), 'quantity', true);
@@ -68,6 +101,8 @@ if (has_post_thumbnail()) : ?>
 
 			<?php endwhile; // End of the loop.
 			?>
+
+			
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
