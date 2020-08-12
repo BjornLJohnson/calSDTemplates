@@ -1,6 +1,11 @@
 <?php
 /* Template Name: ListingsTemplate */
 
+wp_enqueue_style('grid', get_stylesheet_directory_uri() . '/calsdtemplates/css/grid.css');
+
+// add_image_size( 'listing-thumb-size', 100, 100);
+
+
 get_header();
 
 if (mik_theme_option('header_alignment', 'left-align') == 'left-absolute') :
@@ -24,30 +29,88 @@ if (has_post_thumbnail()) : ?>
 		<main id="main" class="site-main">
 
 			<h2 class="page-title">Listings Page</h2>
-			<?php
-			$args = array(
-				'post_type' => 'listing',
-				'post_status' => 'publish'
-			);
-			$loop = new WP_Query($args);
-			while ($loop->have_posts()) : $loop->the_post();
 
-				//the_title( '<h2 class="entry-title"><a href="' . get_permalink() . '" title="' . the_title_attribute( 'echo=0' ) . '" rel="bookmark">', '</a></h2>' ); 
+			<form class="searchcontainer" action="" method="get">
+				Search Keywords:
+				<input class="input-field searchbox" type="text" name="search">
+
+				Location:
+				<input class="input-field locationbox" type="text" name="location">
+
+				<input id="submit" name="submit" type="submit" value="Search">
+			</form>
+
+			<?php
+
+			if (isset($_GET['submit'])) :
+				$args = array(
+					'posts_per_page' => 100,
+					'post_type' => 'listing',
+					'post_status' => 'publish',
+					's' => $_GET['search']
+				);
+			else :
+				$args = array(
+					'posts_per_page' => 100,
+					'post_type' => 'listing',
+					'post_status' => 'publish'
+				);
+			endif;
+
+			$count = 1;
+			$loop = new WP_Query($args);
+
+			if (!($loop->have_posts())) :
+				echo "<h2>No results, displaying all listings</h2>";
+
+				$args = array(
+					'posts_per_page' => 100,
+					'post_type' => 'listing',
+					'post_status' => 'publish'
+				);
+				$loop = new WP_Query($args);
+			endif;
+
+			while ($loop->have_posts()) :
+
+				$loop->the_post();
 
 				$address = get_post_meta(get_the_ID(), 'address', true);
+				$price = get_post_meta(get_the_ID(), 'price', true);
+				$quantity = get_post_meta(get_the_ID(), 'quantity', true);
+				$description = get_post_meta(get_the_ID(), 'description', true);
 
+				$modulus = $count % 3;
+				if ($modulus == 1) {
+					$class = 'first';
+				} elseif ($modulus == 0) {
+					$class = 'last';
+				} else {
+					$class = '';
+				}
+				$count = $count + 1;
 			?>
 
-				<h2><?php the_title(); ?></h2>
-				<div class="entry-content">
-					<?php the_content(); ?>
+				<div class="listing <?php echo $class; ?>">
+					<?php if (has_post_thumbnail()) : ?>
+						<a href="<?php the_permalink(); ?>">
+							<?php the_post_thumbnail(); ?>
+						</a>
+					<?php endif; ?>
+					<h4>
+						<a class="listing-title" href="<?php the_permalink(); ?>"><?php echo wp_trim_words(get_the_title(), 6); ?></a>
+					</h4>
+					<div class="listing-meta">Address: <?php echo $address ?></div>
+					<div class="listing-meta">Price Per Unit: <?php echo $price ?></div>
+					<div class="listing-meta">Quantity: <?php echo $quantity ?></div>
+					<p class="listing-description"> <?php echo $description ?></p>
 				</div>
 
 
-				<div class="entry-metadata">Address: <?php echo $address ?></div>
-
 			<?php endwhile; // End of the loop.
 			?>
+
+
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
