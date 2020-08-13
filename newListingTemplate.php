@@ -5,6 +5,7 @@ wp_enqueue_style('newListing', get_stylesheet_directory_uri() . '/calsdtemplates
 
 get_header();
 
+/*
 if (mik_theme_option('header_alignment', 'left-align') == 'left-absolute') :
 	if (!has_post_thumbnail()) {
 		if (has_header_image()) : ?>
@@ -21,7 +22,11 @@ if (has_post_thumbnail()) : ?>
 	</div>
 <?php endif; ?>
 
+
+
 <div class="single-template-wrapper wrapper page-section">
+*/
+?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
@@ -55,6 +60,6 @@ if (has_post_thumbnail()) : ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 	<?php get_sidebar(); ?>
-</div>
+<!-- </div> -->
 <?php
 get_footer();
