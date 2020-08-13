@@ -54,17 +54,9 @@
 .searchcontainer {
   background: grey;
   padding: 10px;
-  /* margin: 15px -10px; */
   width: 70%;
   color: white;
   border-radius: 3px;
-}
-
-.searchbox {
-  width: 300px;
-  margin-right: 20px;
-}
-
-#submit {
-  background-color: #4444EE;
+  box-sizing: border-box;
+	width: 100%;
 }
