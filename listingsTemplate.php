@@ -5,9 +5,11 @@ wp_enqueue_style('grid', get_stylesheet_directory_uri() . '/calsdtemplates/css/g
 
 // add_image_size( 'listing-thumb-size', 100, 100);
 
+// include "pre-header.php";
 
 get_header();
 
+/*
 if (mik_theme_option('header_alignment', 'left-align') == 'left-absolute') :
 	if (!has_post_thumbnail()) {
 		if (has_header_image()) : ?>
@@ -25,10 +27,13 @@ if (has_post_thumbnail()) : ?>
 <?php endif; ?>
 
 <div class="single-template-wrapper wrapper page-section">
+*/
+
+?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
-			<h2 class="page-title">Listings Page</h2>
+			<!-- <h2 class="page-title">Listings Page</h2> -->
 
 			<form class="searchcontainer" action="" method="get">
 				Search Keywords:
@@ -115,6 +120,6 @@ if (has_post_thumbnail()) : ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 	<?php get_sidebar(); ?>
-</div>
+<!-- </div> -->
 <?php
 get_footer();
