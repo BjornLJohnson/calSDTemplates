@@ -4,12 +4,10 @@ input[type=submit] {
     margin-top: 3px;
 }
 
-#submit {
-    height: 45px;
-    border-radius: 5px;
-    font-size: 1.2em;
-}
-
 textarea.input-field {
     height: 60px;
+}
+
+.input[type=file] {
+    margin-bottom: 10px;
 }
