@@ -15,7 +15,8 @@
     'post_name'  => $_POST["name"],
     'post_title' => $_POST["name"],
     'post_type' => 'listing',
-    'post_status' => 'publish'
+    'post_status' => 'publish',
+    'author' => get_current_user()
   );
 
   $newListingID = wp_insert_post($newListing);
