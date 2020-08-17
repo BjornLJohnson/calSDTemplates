@@ -1,46 +1,52 @@
 <?php
 /* Template Name: ListingsTemplate */
 
-wp_enqueue_style('grid', get_stylesheet_directory_uri() . '/calsdtemplates/css/grid.css');
-
-// add_image_size( 'listing-thumb-size', 100, 100);
-
-// include "pre-header.php";
+wp_enqueue_style('listings', get_stylesheet_directory_uri() . '/calsdtemplates/css/listings.css');
 
 get_header();
-
-/*
-if (mik_theme_option('header_alignment', 'left-align') == 'left-absolute') :
-	if (!has_post_thumbnail()) {
-		if (has_header_image()) : ?>
-			<div class="featured-image inner-header-image">
-				<?php the_header_image_tag(); ?>
-			</div>
-	<?php endif;
-	}
-endif;
-
-if (has_post_thumbnail()) : ?>
-	<div class="featured-image inner-header-image">
-		<?php the_post_thumbnail('full', array('alt' => the_title_attribute('echo=0'))); ?>
-	</div>
-<?php endif; ?>
-
-<div class="single-template-wrapper wrapper page-section">
-*/
 
 ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
-			<!-- <h2 class="page-title">Listings Page</h2> -->
-
 			<form class="searchcontainer" action="" method="get">
-				Search Keywords:
+				<!-- Search Keywords:
 				<input class="input-field searchbox" type="text" name="search">
 
 				Location:
-				<input class="input-field locationbox" type="text" name="location">
+				<input id="locationbox" class="input-field" type="text" name="location">
+
+				<input id="submit" name="submit" type="submit" value="Search"> -->
+
+				<div id="keywordcontainer">
+					<div>Search Keywords:</div>
+					<input class="input-field searchbox" type="text" name="search">
+				</div>
+
+				<div id="locationcontainer">
+					<div>Location:</div>
+					<input id="locationbox" class="input-field" type="text" name="location">
+				</div>
+
+				<div id="categorycontainer">
+					<div>Categories:</div>
+					<div id="categorysubcontainer">
+						<input type="checkbox" name="fruit" value="fruit">
+						<label for="fruit">Fruits</label>
+
+						<input type="checkbox" name="vegetable" value="veg">
+						<label for="vegetable">Vegetables</label>
+
+						<input type="checkbox" name="meat" value="meat">
+						<label for="meat">Meats</label>
+
+						<input type="checkbox" name="dairy" value="dairy">
+						<label for="dairy">Dairy</label>
+
+						<input type="checkbox" name="nuts" value="nuts">
+						<label for="nuts">Nuts, Beans, Grains</label>
+					</div>
+				</div>
 
 				<input id="submit" name="submit" type="submit" value="Search">
 			</form>
@@ -102,8 +108,8 @@ if (has_post_thumbnail()) : ?>
 							<?php the_post_thumbnail(); ?>
 						</a>
 					<?php endif; ?>
-					<h4>
-						<a class="listing-title" href="<?php the_permalink(); ?>"><?php echo wp_trim_words(get_the_title(), 6); ?></a>
+					<h4 class="listing-title">
+						<a href="<?php the_permalink(); ?>"><?php echo wp_trim_words(get_the_title(), 6); ?></a>
 					</h4>
 					<div class="listing-meta">Address: <?php echo $address ?></div>
 					<div class="listing-meta">Price Per Unit: <?php echo $price ?></div>
