@@ -10,14 +10,6 @@ get_header();
 		<main id="main" class="site-main">
 
 			<form class="searchcontainer" action="" method="get">
-				<!-- Search Keywords:
-				<input class="input-field searchbox" type="text" name="search">
-
-				Location:
-				<input id="locationbox" class="input-field" type="text" name="location">
-
-				<input id="submit" name="submit" type="submit" value="Search"> -->
-
 				<div id="keywordcontainer">
 					<div>Search Keywords:</div>
 					<input class="input-field searchbox" type="text" name="search">
@@ -69,25 +61,8 @@ get_header();
 						$categories = $categories . $catItem . ",";
 					}
 					$args['category_name'] = $categories;
-					// $args['category_name'] = $_GET['category'];
 				endif;
 
-				// $categories = "";
-				// if($_GET['fruit']) :
-				// 	$categories = $categories . "fruits,";
-				// endif;
-				// if($_GET['veg']) :
-				// 	$categories = $categories . "vegetables,";
-				// endif;
-				// if($_GET['meat']) :
-				// 	$categories = $categories . "meats,";
-				// endif;
-				// if($_GET['dairy']) :
-				// 	$categories = $categories . "dairy,";
-				// endif;
-				// if($_GET['nuts']) :
-				// 	$categories = $categories . "grains-beans-nuts";
-				// endif;
 			else :
 				$args = array(
 					'posts_per_page' => 100,
@@ -114,6 +89,7 @@ get_header();
 
 				$loop->the_post();
 
+				$product = get_post_meta(get_the_ID(), 'product', true);
 				$address = get_post_meta(get_the_ID(), 'address', true);
 				$price = get_post_meta(get_the_ID(), 'price', true);
 				$quantity = get_post_meta(get_the_ID(), 'quantity', true);
@@ -139,6 +115,7 @@ get_header();
 					<h4 class="listing-title">
 						<a href="<?php the_permalink(); ?>"><?php echo wp_trim_words(get_the_title(), 6); ?></a>
 					</h4>
+					<div class="listing-meta">Product: <?php echo $product ?></div>
 					<div class="listing-meta">Address: <?php echo $address ?></div>
 					<div class="listing-meta">Price Per Unit: <?php echo $price ?></div>
 					<div class="listing-meta">Quantity: <?php echo $quantity ?></div>
