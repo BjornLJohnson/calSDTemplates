@@ -29,21 +29,21 @@ get_header();
 				</div>
 
 				<div id="categorycontainer">
-					<div>Categories:</div>
+					<div>Category:</div>
 					<div id="categorysubcontainer">
-						<input type="checkbox" name="fruit" value="fruit">
+						<input type="checkbox" name="category[]" value="fruits">
 						<label for="fruit">Fruits</label>
 
-						<input type="checkbox" name="vegetable" value="veg">
+						<input type="checkbox" name="category[]" value="vegetables">
 						<label for="vegetable">Vegetables</label>
 
-						<input type="checkbox" name="meat" value="meat">
+						<input type="checkbox" name="category[]" value="meats">
 						<label for="meat">Meats</label>
 
-						<input type="checkbox" name="dairy" value="dairy">
+						<input type="checkbox" name="category[]" value="dairy">
 						<label for="dairy">Dairy</label>
 
-						<input type="checkbox" name="nuts" value="nuts">
+						<input type="checkbox" name="category[]" value="grains-beans-nuts">
 						<label for="nuts">Nuts, Beans, Grains</label>
 					</div>
 				</div>
@@ -54,12 +54,40 @@ get_header();
 			<?php
 
 			if (isset($_GET['submit'])) :
+
 				$args = array(
 					'posts_per_page' => 100,
 					'post_type' => 'listing',
 					'post_status' => 'publish',
 					's' => $_GET['search']
 				);
+
+				if(isset($_GET['category'])) :
+					$categories = "";
+					$catArray = $_GET['category'];
+					foreach ($catArray as $catItem){ 
+						$categories = $categories . $catItem . ",";
+					}
+					$args['category_name'] = $categories;
+					// $args['category_name'] = $_GET['category'];
+				endif;
+
+				// $categories = "";
+				// if($_GET['fruit']) :
+				// 	$categories = $categories . "fruits,";
+				// endif;
+				// if($_GET['veg']) :
+				// 	$categories = $categories . "vegetables,";
+				// endif;
+				// if($_GET['meat']) :
+				// 	$categories = $categories . "meats,";
+				// endif;
+				// if($_GET['dairy']) :
+				// 	$categories = $categories . "dairy,";
+				// endif;
+				// if($_GET['nuts']) :
+				// 	$categories = $categories . "grains-beans-nuts";
+				// endif;
 			else :
 				$args = array(
 					'posts_per_page' => 100,

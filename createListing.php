@@ -16,8 +16,17 @@
     'post_title' => $_POST["name"],
     'post_type' => 'listing',
     'post_status' => 'publish',
-    'author' => get_current_user()
+    'post_author' => get_current_user_id()
   );
+
+  if(isset($_POST['category'])) :
+    $catIDArray = array();
+    $catArray = $_POST['category'];
+    foreach ($catArray as $catItem){ 
+      array_push($catIDArray, get_cat_ID($catItem));
+    }
+    $newListing['post_category'] = $catIDArray;
+  endif;
 
   $newListingID = wp_insert_post($newListing);
 
@@ -25,6 +34,7 @@
   add_post_meta($newListingID, 'product', $_POST["product"], true);
   add_post_meta($newListingID, 'quantity', $_POST["quantity"], true);
   add_post_meta($newListingID, 'price', $_POST["price"], true);
+  add_post_meta($newListingID, 'description', $_POST["description"], true);
 
   $uploaddir = wp_upload_dir();
   $file = $_FILES['thumbnail'];

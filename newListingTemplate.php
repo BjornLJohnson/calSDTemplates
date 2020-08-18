@@ -5,27 +5,6 @@ wp_enqueue_style('newListing', get_stylesheet_directory_uri() . '/calsdtemplates
 
 get_header();
 
-/*
-if (mik_theme_option('header_alignment', 'left-align') == 'left-absolute') :
-	if (!has_post_thumbnail()) {
-		if (has_header_image()) : ?>
-			<div class="featured-image inner-header-image">
-				<?php the_header_image_tag(); ?>
-			</div>
-	<?php endif;
-	}
-endif;
-
-if (has_post_thumbnail()) : ?>
-	<div class="featured-image inner-header-image">
-		<?php the_post_thumbnail('full', array('alt' => the_title_attribute('echo=0'))); ?>
-	</div>
-<?php endif; ?>
-
-
-
-<div class="single-template-wrapper wrapper page-section">
-*/
 ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
@@ -41,6 +20,24 @@ if (has_post_thumbnail()) : ?>
 
 				<div class="input-title">Product:</div>
 				<input class="input-field" type="text" name="product"><br>
+
+				<div class="input-title">Product Category:</div>
+				<div id="categorysubcontainer">
+					<input type="checkbox" name="category[]" value="fruits">
+					<label for="fruit">Fruits</label>
+
+					<input type="checkbox" name="category[]" value="vegetables">
+					<label for="vegetable">Vegetables</label>
+
+					<input type="checkbox" name="category[]" value="meats">
+					<label for="meat">Meats</label>
+
+					<input type="checkbox" name="category[]" value="dairy">
+					<label for="dairy">Dairy</label>
+
+					<input type="checkbox" name="category[]" value="grains-beans-nuts">
+					<label for="nuts">Nuts, Beans, Grains</label>
+				</div>
 
 				<div class="input-title">Quantity:</div>
 				<input class="input-field" type="text" name="quantity"><br>
