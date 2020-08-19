@@ -22,7 +22,7 @@ get_header();
 				<input class="input-field" type="text" name="product"><br>
 
 				<div class="input-title">Product Category:</div>
-				<div id="categorysubcontainer">
+				<div id="categorycontainer">
 					<input type="checkbox" name="category[]" value="fruits">
 					<label for="fruit">Fruits</label>
 
@@ -37,6 +37,18 @@ get_header();
 
 					<input type="checkbox" name="category[]" value="grains-beans-nuts">
 					<label for="nuts">Nuts, Beans, Grains</label>
+				</div>
+
+				<div class="input-title">Product Tags:</div>	
+				<div id="tagcontainer">
+					<input type="checkbox" name="tag[]" value="organic">
+					<label for="organic">Organic</label>
+
+					<input type="checkbox" name="tag[]" value="non-gmo">
+					<label for="non-gmo">Non-GMO</label>
+
+					<input type="checkbox" name="tag[]" value="family">
+					<label for="family">Family-Owned</label>
 				</div>
 
 				<div class="input-title">Quantity:</div>

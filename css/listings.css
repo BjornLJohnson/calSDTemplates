@@ -57,23 +57,37 @@
   height: 256px;
 }
 
+#locationbox {
+  margin-bottom: 10px;
+  width: 45%;
+}
+
 #categorycontainer {
   width: 50%;
   position: absolute;
-  left: 50%;
+  left: 48%;
   top: 100px;
-}
-
-#categorysubcontainer {
   margin: 5px 10px 0px 0px;
 }
 
-#categorycontainer label {
+#categorycontainer label,
+#tagcontainer label {
   font-size: .9em;
   margin: 0 10px 0 0;
 }
 
-#locationbox {
-  margin-bottom: 10px;
-  width: 45%;
+#tagcontainer {
+  width: 50%;
+  position: absolute;
+  left: 48%;
+  top: 150px;
+  margin: 5px 10px 0px 0px;
+}
+
+#catlabel {
+  margin-right: 15px;
+}
+
+#taglabel {
+  margin-right: 55px;
 }

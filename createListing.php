@@ -28,6 +28,10 @@
     $newListing['post_category'] = $catIDArray;
   endif;
 
+  if(isset($_POST['tag'])) :
+    $newListing['tags_input'] = $_POST['tag'];
+  endif;
+
   $newListingID = wp_insert_post($newListing);
 
   add_post_meta($newListingID, 'address', $_POST["address"], true);

@@ -23,7 +23,8 @@ form {
     margin-top: 5px;
 }
 
-#categorysubcontainer {
+#categorycontainer,
+#tagcontainer {
     margin: 5px 0px 5px 5px;
 }
 

@@ -21,23 +21,33 @@ get_header();
 				</div>
 
 				<div id="categorycontainer">
-					<div>Category:</div>
-					<div id="categorysubcontainer">
-						<input type="checkbox" name="category[]" value="fruits">
-						<label for="fruit">Fruits</label>
+					<span id="catlabel">Category:</span>
+					<input type="checkbox" name="category[]" value="fruits">
+					<label for="fruit">Fruits</label>
 
-						<input type="checkbox" name="category[]" value="vegetables">
-						<label for="vegetable">Vegetables</label>
+					<input type="checkbox" name="category[]" value="vegetables">
+					<label for="vegetable">Vegetables</label>
 
-						<input type="checkbox" name="category[]" value="meats">
-						<label for="meat">Meats</label>
+					<input type="checkbox" name="category[]" value="meats">
+					<label for="meat">Meats</label>
 
-						<input type="checkbox" name="category[]" value="dairy">
-						<label for="dairy">Dairy</label>
+					<input type="checkbox" name="category[]" value="dairy">
+					<label for="dairy">Dairy</label>
 
-						<input type="checkbox" name="category[]" value="grains-beans-nuts">
-						<label for="nuts">Nuts, Beans, Grains</label>
-					</div>
+					<input type="checkbox" name="category[]" value="grains-beans-nuts">
+					<label for="nuts">Nuts, Beans, Grains</label>
+				</div>
+
+				<div id="tagcontainer">
+					<span id="taglabel">Tags:</span>
+					<input type="checkbox" name="tag[]" value="organic">
+					<label for="organic">Organic</label>
+
+					<input type="checkbox" name="tag[]" value="non-gmo">
+					<label for="non-gmo">Non-GMO</label>
+
+					<input type="checkbox" name="tag[]" value="family">
+					<label for="family">Family-Owned</label>
 				</div>
 
 				<input id="submit" name="submit" type="submit" value="Search">
@@ -61,6 +71,15 @@ get_header();
 						$categories = $categories . $catItem . ",";
 					}
 					$args['category_name'] = $categories;
+				endif;
+
+				if(isset($_GET['tags'])) :
+					$tags = "";
+					$tagArray = $_GET['tags'];
+					foreach ($tagArray as $tag){ 
+						$tags = $tags . $tag . ",";
+					}
+					$args['tag'] = $tags;
 				endif;
 
 			else :
