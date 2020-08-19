@@ -1,0 +1,53 @@
+/* Stylesheet for simclick */
+.distance {
+  color: red;
+}
+.featured-image {
+  display: inline-block; 
+  text-align: left;
+}
+
+.listing-info {
+  display: inline-block;
+  text-align: left;
+}
+.person-info {
+  display: inline-block; 
+  text-align: left;
+}
+
+.prod-info {
+  margin-bottom: 20px;
+}
+
+.column {
+  float: left;
+  margin: auto;
+  width: 33.33%;
+  text-align: center;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.button  {
+  padding: 10px 24px;
+  margin-top: 20px;
+}
+
+b {
+  font-weight:bold;
+}
+
+.description {
+  border: 1px solid green;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
