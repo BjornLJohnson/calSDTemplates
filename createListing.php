@@ -32,6 +32,11 @@
     $newListing['tags_input'] = $_POST['tag'];
   endif;
 
+  $dump = $_POST["name"] ." ". $_POST["product"] ." ". $_POST['description'];
+
+  // Dump important info into post content for search purposes
+  $newListing['post_content'] = $dump;
+
   $newListingID = wp_insert_post($newListing);
 
   add_post_meta($newListingID, 'address', $_POST["address"], true);
