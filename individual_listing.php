@@ -25,8 +25,6 @@ function getDrivingDist ($address, $location) {
 
 	$url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=$location&destinations=$address&key=" . $key;
 
-	echo "API Key is: " . $key;
-
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
