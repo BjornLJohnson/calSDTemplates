@@ -12,24 +12,18 @@ session_start();
 wp_enqueue_style('individual', get_stylesheet_directory_uri() . '/calsdtemplates/css/individual.css');
 
 get_header(); 
-$c_street = $_SESSION['c_street'];
-$c_city = $_SESSION['c_city'];
-$c_state = $_SESSION['c_state'];
+$location = $_SESSION['location'];
 ?>
 
 <?php
 
-function getDrivingDist ($street_address,$city,$state,$c_street,$c_city,$c_state) {
-  	$street_address = str_replace(" ", "+", $street_address);
-    $city = str_replace(" ", "+", $city);
-    $state = str_replace(" ", "+", $state);
-    $c_street = str_replace(" ", "+", $c_street);
-    $c_city = str_replace(" ", "+", $c_city);
-    $c_state = str_replace(" ", "+", $c_state);
+function getDrivingDist ($address, $location) {
 
-	$url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=$c_street,+$c_city,+$c_state&destinations=$street_address,+$city,+$state&key=AIzaSyCQWgksFykHO6__c8hYZbz3yFxHTjnNtSI";
-	// $url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=101+East+21st+Street,+Austin,+TX&destinations=$street_address,+$city,+$state&key=AIzaSyCQWgksFykHO6__c8hYZbz3yFxHTjnNtSI";
+  	$address = str_replace(" ", "+", $address);
 
+    $location = str_replace(" ", "+", $location);
+
+	$url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=$location&destinations=$address&key=";
 
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
@@ -44,8 +38,6 @@ function getDrivingDist ($street_address,$city,$state,$c_street,$c_city,$c_state
 }
 
 $address = get_post_meta(get_the_ID(), 'address', true);
-$city = get_post_meta(get_the_ID(), 'city', true);
-$state = get_post_meta(get_the_ID(), 'state', true);
 $product = get_post_meta(get_the_ID(), 'product', true);
 $price = get_post_meta(get_the_ID(), 'price', true);
 $quantity = get_post_meta(get_the_ID(), 'quantity', true);
@@ -74,7 +66,8 @@ $description = get_post_meta(get_the_ID(), 'description', true);
 		<div class = "column">
 			<div class = "listing-info">
 				<?php 
-					$dist = getDrivingDist($address, $city, $state, $c_street, $c_city, $c_state); 
+					$dist = getDrivingDist($address, $location); 
+					echo implode("|", $dist);
 					$dist_km = $dist['rows'][0]['elements'][0]['distance']['text']; //distance in km
 					$dist_m = $dist_km/1.609;
 				?> 
