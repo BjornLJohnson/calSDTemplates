@@ -51,6 +51,10 @@ get_header();
 				</div>
 
 				<input id="submit" name="submit" type="submit" value="Search">
+
+				<button class="back-button">
+					<a href="listings">Back to All Listings</a>
+				</button>
 			</form>
 
 			<?php
