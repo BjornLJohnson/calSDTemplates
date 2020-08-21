@@ -44,6 +44,9 @@
   add_post_meta($newListingID, 'quantity', $_POST["quantity"], true);
   add_post_meta($newListingID, 'price', $_POST["price"], true);
   add_post_meta($newListingID, 'description', $_POST["description"], true);
+  add_post_meta($newListingID, 'user_email', $_POST["user_email"], true);
+  add_post_meta($newListingID, 'contact_name', $_POST["contact_name"], true);
+  add_post_meta($newListingID, 'phone_number', $_POST["phone_number"], true);
 
   $uploaddir = wp_upload_dir();
   $file = $_FILES['thumbnail'];

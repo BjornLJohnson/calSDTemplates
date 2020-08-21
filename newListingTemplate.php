@@ -13,10 +13,19 @@ get_header();
 
 			<form action=<?php echo get_theme_file_uri($file = 'calsdtemplates/createListing.php') ?> method="post" enctype="multipart/form-data">
 				<div class="input-title">Organization Name:</div>
-				<input class="input-field" type="text" name="name"><br>
+				<input class="input-field" type="text" name="name" value="<?php echo get_user_meta(get_current_user_id(), 'name', true);?>"><br>
+
+				<div class="input-title">Contact Name:</div>
+				<input class="input-field" type="text" name="contact_name" value="<?php echo get_user_meta(get_current_user_id(), 'contact_name', true);?>"><br>
+
+				<div class="input-title">Phone Number:</div>
+				<input class="input-field" type="text" name="phone_number" value="<?php echo get_user_meta(get_current_user_id(), 'phone_number', true );?>"><br>
+
+				<div class="input-title">Email:</div>
+				<input class="input-field" type="text" name="user_email" value="<?php echo wp_get_current_user()->data->user_email;?>"><br>
 
 				<div class="input-title">Address:</div>
-				<input class="input-field" type="text" name="address"><br>
+				<input class="input-field" type="text" name="address" value="<?php echo get_user_meta(get_current_user_id(), 'address', true );?>"<br>
 
 				<div class="input-title">Product:</div>
 				<input class="input-field" type="text" name="product"><br>

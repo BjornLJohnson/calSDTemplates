@@ -43,15 +43,15 @@ function getDrivingDist ($street_address,$city,$state,$c_street,$c_city,$c_state
 }
 
 $address = get_post_meta(get_the_ID(), 'address', true);
-$city = get_post_meta(get_the_ID(), 'city', true);
-$state = get_post_meta(get_the_ID(), 'state', true);
 $product = get_post_meta(get_the_ID(), 'product', true);
 $price = get_post_meta(get_the_ID(), 'price', true);
 $quantity = get_post_meta(get_the_ID(), 'quantity', true);
-$contact_name = get_post_meta(get_the_ID(), 'contact_name', true);
-$phone_number = get_post_meta(get_the_ID(), 'phone_number', true);
-$email = get_post_meta(get_the_ID(), 'email', true);
 $description = get_post_meta(get_the_ID(), 'description', true);
+$phone_number = get_post_meta(get_the_ID(), 'phone_number', true);
+$contact_name = get_post_meta(get_the_ID(), 'contact_name', true);
+$user_email = get_post_meta(get_the_ID(), 'user_email', true);
+$current_user_phone = get_user_meta(get_current_user_id(), 'phone_number', true);
+$current_user_name = get_user_meta(get_current_user_id(), 'contact_name', true);
 
 ?>
 
@@ -92,11 +92,11 @@ $description = get_post_meta(get_the_ID(), 'description', true);
 				<div style = "text-transform: uppercase; margin-bottom: 10px"> Contact Now</div>
 				<div><b>Name: </b><?php echo $contact_name ?></div>
 				<div><b>Phone Number: </b><?php echo $phone_number ?></div>
-				<div><b>Email: </b><?php echo $email ?></div>
-				<div><b>Address: </b><?php echo $address.", ".$city." ".$state ?></div>
+				<div><b>Email: </b><?php echo $user_email ?></div>
+				<div><b>Address: </b><?php echo $address ?></div>
 				<?php 
-					$email_link = "mailto:$email?
-					&subject=Interested%20in%20your%20$product%20listing&body=Hi%20$contact_name,%0D%0A%0D%0AI%20am%20interested%20in%20obtaining%20the%20$product%20that%20you%20listed%20on%20CALSD%20Marketplace%20at%20calsd.marqui.tech.%0D%0A%20Please%20reply%20if%20you%20want%20to%20connect!%20%0D%0A%0D%0ABest,%0D%0A[enter name here]%0D%0A[enter phone number here]"
+					$email_link = "mailto:$user_email?
+					&subject=Interested%20in%20your%20$product%20listing&body=Hi%20$contact_name,%0D%0A%0D%0AI%20am%20interested%20in%20obtaining%20the%20$product%20that%20you%20listed%20on%20CALSD%20Marketplace%20at%20calsd.marqui.tech.%0D%0A%20Please%20reply%20if%20you%20want%20to%20connect!%20%0D%0A%0D%0ABest,%0D%0A$current_user_name%0D%0A$current_user_phone"
 				?>
 
 				<div><a href = "<?=$email_link?>" target = "_blank"> <?php echo "Click to email ".$contact_name." now!"?> </a>
