@@ -80,10 +80,10 @@ $description = get_post_meta(get_the_ID(), 'description', true);
 		<div class = "column">
 			<div class = "person-info">
 				<div style = "text-transform: uppercase; margin-bottom: 10px"> Contact Now</div>
-				<div><b>Name: </b><?php echo $name ?></div>
-				<div><b>Phone Number: </b><?php echo $number ?></div>
-				<div><b>Email: </b><?php echo $email ?></div>
-				<div><b>Address: </b><?php echo $address?></div>
+				<div><b>Name: </b><?php echo $contact_name ?></div>
+				<div><b>Phone Number: </b><?php echo $phone_number ?></div>
+				<div><b>Email: </b><?php echo $user_email ?></div>
+				<div><b>Address: </b><?php echo $address ?></div>
 				<?php 
 					$email_link = "mailto:$email?
 					&subject=Interested%20in%20your%20$product%20listing&body=Hi%20$name,%0D%0A%0D%0AI%20am%20interested%20in%20obtaining%20the%20$product%20that%20you%20listed%20on%20calsd.marqui.tech.%20I%20would%20like%20to%20connect.%0D%0A%20Look%20forward%20to%20hearing%20back%20from%20you%20soon!%0D%0A%0D%0ABest,%0D%0A[enter name here]"
