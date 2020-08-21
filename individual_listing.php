@@ -55,7 +55,7 @@ $description = get_post_meta(get_the_ID(), 'description', true);
 				?>
 			</div>
 		<?php endif; ?>
-	 	<div><a href ="<?php echo 'listings/?' . $_SERVER['QUERY_STRING']?>" class = "button"> See All Listings </a></div>
+	 	<div><a href ="<?php $return="listings/?".$_SERVER['QUERY_STRING']; echo $return;?>" class = "button"> See All Listings </a></div>
 	</div>
 
 	
