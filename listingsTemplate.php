@@ -1,6 +1,6 @@
 <?php
 /* Template Name: ListingsTemplate */
-
+session_start();
 wp_enqueue_style('listings', get_stylesheet_directory_uri() . '/calsdtemplates/css/listings.css');
 
 get_header();
@@ -51,6 +51,10 @@ get_header();
 				</div>
 
 				<input id="submit" name="submit" type="submit" value="Search">
+
+				<button class="back-button">
+					<a href="listings">Back to All Listings</a>
+				</button>
 			</form>
 
 			<?php
@@ -63,6 +67,10 @@ get_header();
 					'post_status' => 'publish',
 					's' => $_GET['search']
 				);
+
+				if(isset($_GET['location'])) :
+					$_SESSION['location'] = $_GET['location'];
+				endif;
 
 				if(isset($_GET['category'])) :
 					$categories = "";

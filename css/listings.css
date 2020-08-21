@@ -1,3 +1,11 @@
+.back-button {
+  margin-top: 0;
+}
+
+.back-button a {
+  color: white;
+}
+
 .listing {
   overflow: hidden;
   box-sizing: border-box;
