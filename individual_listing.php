@@ -6,11 +6,10 @@
  *
  * @package SimClick
  */
-session_start();
 wp_enqueue_style('individual', get_stylesheet_directory_uri() . '/calsdtemplates/css/individual.css');
 
 get_header(); 
-$location = $_SESSION['location'];
+$location = $_GET['location'];
 ?>
 
 <?php
@@ -56,7 +55,7 @@ $description = get_post_meta(get_the_ID(), 'description', true);
 				?>
 			</div>
 		<?php endif; ?>
-	 	<div><a href = "listings" class = "button"> See All Listings </a></div>
+	 	<div><a href ="<?php echo 'listings?' . $_SERVER['QUERY_STRING']?>" class = "button"> See All Listings </a></div>
 	</div>
 
 	

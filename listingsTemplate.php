@@ -1,6 +1,5 @@
 <?php
 /* Template Name: ListingsTemplate */
-session_start();
 wp_enqueue_style('listings', get_stylesheet_directory_uri() . '/calsdtemplates/css/listings.css');
 
 get_header();
@@ -68,10 +67,6 @@ get_header();
 					's' => $_GET['search']
 				);
 
-				if(isset($_GET['location'])) :
-					$_SESSION['location'] = $_GET['location'];
-				endif;
-
 				if(isset($_GET['category'])) :
 					$categories = "";
 					$catArray = $_GET['category'];
@@ -135,12 +130,12 @@ get_header();
 
 				<div class="listing <?php echo $class; ?>">
 					<?php if (has_post_thumbnail()) : ?>
-						<a href="<?php the_permalink(); ?>">
+						<a href="<?php echo the_permalink()."?".$_SERVER['QUERY_STRING']; ?>">
 							<?php the_post_thumbnail(); ?>
 						</a>
 					<?php endif; ?>
 					<h4 class="listing-title">
-						<a href="<?php the_permalink(); ?>"><?php echo wp_trim_words(get_the_title(), 6); ?></a>
+						<a href="<?php echo the_permalink()."?".$_SERVER['QUERY_STRING']; ?>"><?php echo wp_trim_words(get_the_title(), 6); ?></a>
 					</h4>
 					<div class="listing-meta">Product: <?php echo $product ?></div>
 					<div class="listing-meta">Address: <?php echo $address ?></div>

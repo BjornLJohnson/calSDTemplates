@@ -25,7 +25,7 @@ get_header();
 				<input class="input-field" type="text" name="user_email" value="<?php echo wp_get_current_user()->data->user_email;?>"><br>
 
 				<div class="input-title">Address:</div>
-				<input class="input-field" type="text" name="address" value="<?php echo get_user_meta(get_current_user_id(), 'address', true );?>"<br>
+				<input class="input-field" type="text" name="address" value="<?php echo get_user_meta(get_current_user_id(), 'address', true );?>"><br>
 
 				<div class="input-title">Product:</div>
 				<input class="input-field" type="text" name="product"><br>
