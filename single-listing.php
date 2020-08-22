@@ -87,11 +87,11 @@ $current_user_name = get_user_meta(get_current_user_id(), 'contact_name', true);
 				<div><b>Email: </b><?php echo $user_email ?></div>
 				<div><b>Address: </b><?php echo $address ?></div>
 				<?php 
-					$email_link = "mailto:$email?
-					&subject=Interested%20in%20your%20$product%20listing&body=Hi%20$name,%0D%0A%0D%0AI%20am%20interested%20in%20obtaining%20the%20$product%20that%20you%20listed%20on%20calsd.marqui.tech.%20I%20would%20like%20to%20connect.%0D%0A%20Look%20forward%20to%20hearing%20back%20from%20you%20soon!%0D%0A%0D%0ABest,%0D%0A[enter name here]"
+					$email_link = "mailto:$user_email?
+					&subject=Interested%20in%20your%20$product%20listing&body=Hi%20$contact_name,%0D%0A%0D%0AI%20am%20interested%20in%20obtaining%20the%20$product%20that%20you%20listed%20on%20CALSD%20Marketplace%20at%20calsd.marqui.tech.%20Please%20reach%20out%20if%20you%20want%20to%20connect!%0D%0A%0D%0ABest,%0D%0A[enter name here]%0D%0A[enter additional contact info here]"
 				?>
 
-				<div><a href = "<?=$email_link?>" target = "_blank"> <?php echo "Click to email ".$name." now!"?> </a>
+				<div><a href = "<?=$email_link?>" target = "_blank"> <?php echo "Click to email ".$contact_name." now!"?> </a>
 			</div>
 				
 		</div><!-- .column -->			    		
